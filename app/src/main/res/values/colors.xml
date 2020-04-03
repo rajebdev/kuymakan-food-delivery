@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00D00E</color>
+    <color name="colorPrimaryDark">#009D0A</color>
+    <color name="colorAccent">#70E978</color>
+
+    <color name="colorLight">#fff</color>
+
+    // Bottom Navigasi
+    <color name="colorNavigationIcon">#999</color>
+    <color name="colorNavigationText">#999</color>
+
+</resources>
+

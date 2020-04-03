@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Kuy Makan</string>
+    <string name="home">Home</string>
+    <string name="coupon">Coupon</string>
+    <string name="info">Info</string>
+    <string name="profile">Profile</string>
+</resources>
