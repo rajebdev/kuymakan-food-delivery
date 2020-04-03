@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_marginEnd="10dp">
+
+    <ImageView
+        android:id="@+id/img_food_slider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/slider3"
+        android:contentDescription="@string/makanan_name"/>
+
+    <TextView
+        android:id="@+id/tv_food_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/makanan_name"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="5dp"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:textColor="@color/colorLight"/>
+
+</FrameLayout>

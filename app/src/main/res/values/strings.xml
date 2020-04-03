@@ -4,4 +4,10 @@
     <string name="coupon">Coupon</string>
     <string name="info">Info</string>
     <string name="profile">Profile</string>
+    <string name="bakalan_sumobito">Bakalan, Sumobito</string>
+    <string name="pilih_lokasi">Pilih Lokasi</string>
+    <string name="makanan_name">Makanan Name</string>
+    <string name="tomorrow_s_menu">Tomorrow\'s Menu</string>
+    <string name="all_day_breakfast">All-Day Breakfast</string>
+    <string name="all_happiness_starts_with_a_delicious_breakfast">All happiness starts with a delicious breakfast</string>
 </resources>
