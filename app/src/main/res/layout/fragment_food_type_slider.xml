@@ -6,7 +6,7 @@
     android:layout_marginEnd="10dp">
 
     <ImageView
-        android:id="@+id/img_food_slider"
+        android:tag="img_food_slider"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
@@ -14,7 +14,7 @@
         android:contentDescription="@string/makanan_name"/>
 
     <TextView
-        android:id="@+id/tv_food_slider"
+        android:tag="tv_food_slider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/makanan_name"

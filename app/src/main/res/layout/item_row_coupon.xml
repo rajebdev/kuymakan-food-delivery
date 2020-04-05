@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/rect_radius"
+    android:paddingBottom="5dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:elevation="5dp">
+
+    <ImageView
+        android:id="@+id/img_coupon"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/coupon1"
+        android:background="@drawable/rect_radius"
+        android:contentDescription="@string/gambar_coupon" />
+
+    <TextView
+        android:id="@+id/name_coupon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:text="Voucher Rp 42.000 pakai Kuy Pay"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#000" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_event_black_24dp"
+                android:tint="#888"/>
+            <TextView
+                android:id="@+id/expired_coupon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textSize="12sp"
+                android:text="@string/berlaku_hingga_8_apr_2020"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_use_coupon"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/rounder_corner_green"
+            android:text="@string/pakai"
+            android:textColor="#fff"
+            android:textAllCaps="false"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+</LinearLayout>

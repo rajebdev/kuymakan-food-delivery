@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="150dp"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="15dp">
+
+    <FrameLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:tag=""
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/slider4"
+            tools:ignore="ContentDescription"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner_pink"
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:text="New"
+            tools:ignore="HardcodedText" />
+
+        <ImageButton
+            android:tag="btn_favorite"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_favorite_border_black_24dp"
+            android:layout_gravity="end"
+            android:layout_margin="5dp"
+            android:tint="#fff"
+            android:background="@null"
+            android:padding="2dp"
+            tools:ignore="ContentDescription" />
+
+        <FrameLayout
+            android:tag="sold_out_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/background_gradient">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sold_out"
+                android:layout_gravity="center"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/get_a_daily_reminder_to_never_miss_out_again"
+                android:layout_gravity="center"
+                android:textColor="#fff"
+                android:textSize="12sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textAlignment="center"/>
+        </FrameLayout>
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="150dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New!"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff0000"
+            android:textSize="12sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/nama_makanan_dummy"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/idr_30_000"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <Button
+        android:tag="btn_add_to_cart"
+        android:layout_width="125dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rounder_corner_green"
+        android:text="@string/add_to_cart"
+        tools:ignore="ContentDescription"
+        android:textAllCaps="false"
+        android:textColor="#fff" />
+</RelativeLayout>

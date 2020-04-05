@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="275dp"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounder_corner_green_dark"
+    android:padding="15dp"
+    android:layout_marginEnd="15dp"
+    tools:ignore="UselessParent"
+    android:tag="background_featured">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/discover_prime"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="@string/pre_pay_and_save_35_with_prime"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_alignParentBottom="true"
+        android:textAlignment="center"
+        android:text="@string/start_saving"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:background="@drawable/rounder_corner_green"/>
+</RelativeLayout>
