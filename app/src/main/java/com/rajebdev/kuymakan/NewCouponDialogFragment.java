@@ -17,7 +17,7 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Objects;
 
-public class DialogFragmentNewCoupon extends DialogFragment {
+public class NewCouponDialogFragment extends DialogFragment {
 
     static String TAG = "FullScreenDialog";
     private EditText editText;

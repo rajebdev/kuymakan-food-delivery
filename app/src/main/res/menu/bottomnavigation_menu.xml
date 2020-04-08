@@ -3,12 +3,18 @@
     <item
         android:id="@+id/home_menu"
         android:title="@string/home"
-        android:icon="@drawable/ic_home"/>
+        android:icon="@drawable/ic_explore_black_24dp"/>
+
+    <item
+        android:id="@+id/order_menu"
+        android:title="@string/order"
+        android:icon="@drawable/ic_shopping_cart_black_24dp"/>
 
     <item
         android:id="@+id/coupon_menu"
         android:title="@string/coupon"
         android:icon="@drawable/ic_coupon"/>
+
 
     <item
         android:id="@+id/info_menu"

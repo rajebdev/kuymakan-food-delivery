@@ -1,20 +1,25 @@
 package com.rajebdev.kuymakan;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Build;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -32,6 +37,13 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        // Set Search View
+        final SearchView searchView = view.findViewById(R.id.search_food);
+
+        // Line Bottom Search View
+        View v = searchView.findViewById(R.id.search_plate);
+        v.setBackgroundColor(Color.TRANSPARENT);
+
         // Set Flipper Image Slider
         setFlipperImageSlider(view);
 
@@ -45,11 +57,23 @@ public class HomeFragment extends Fragment {
         ft.commit();
 
         //  Set Delivery sheet
-        FrameLayout btnDeliveryLocation = view.findViewById(R.id.btn_delivery_location);
+        View btnDeliveryLocation = view.findViewById(R.id.btn_delivery_location);
         btnDeliveryLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showSheetLocation(view);
+            }
+        });
+
+        //  Set Favorite Food Button
+        View btnFavoriteFood = view.findViewById(R.id.btn_favorite_food);
+        btnFavoriteFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FavoriteFoodListDialogFragment favoriteFoodListDialogFragment = new FavoriteFoodListDialogFragment();
+                assert getFragmentManager() != null;
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                favoriteFoodListDialogFragment.show(ft, FavoriteFoodListDialogFragment.TAG);
             }
         });
 
@@ -107,6 +131,14 @@ public class HomeFragment extends Fragment {
             ft.add(R.id.food_slider_container, itemFoodSlider);
         }
         // End Food Slider
+
+        // Start Group Menu Slider
+        for (int i=0; i < 9; i++)
+        {
+            Fragment itemCategoryGrid = new CategoryFragment();
+            ft.add(R.id.grid_category_container, itemCategoryGrid);
+        }
+        // End Group Menu Slider
 
         // Start Group Menu Slider
         for (int i=0; i < 5; i++)

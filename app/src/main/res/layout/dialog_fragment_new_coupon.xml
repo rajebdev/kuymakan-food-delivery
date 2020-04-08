@@ -27,7 +27,7 @@
         </com.google.android.material.appbar.AppBarLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="15dp"
             android:paddingTop="20dp"
             android:orientation="vertical">
@@ -71,17 +71,23 @@
                     android:layout_height="36dp"
                     android:src="@drawable/ic_delete_black_24dp"
                     android:background="@null"
+                    android:tint="#888"
                     android:layout_gravity="end|center_vertical"/>
             </FrameLayout>
-            <Button
-                android:id="@+id/btn_use_new_coupon"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_gravity="end"
-                android:text="@string/pakai"
-                android:background="@drawable/rounder_corner_green"
-                android:textColor="#fff"
-                android:textAllCaps="false"/>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btn_use_new_coupon"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/validasi_kodemu"
+                    android:background="@drawable/rounder_corner_green"
+                    android:textColor="#fff"
+                    android:textAllCaps="false"/>
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -17,10 +18,13 @@ public class BuyerActivity extends AppCompatActivity implements BottomNavigation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyer);
+
         // kita set default nya Home Fragment
-        loadFragment(new CouponFragment());
+        loadFragment(new HomeFragment());
+
         // initialisation BottomNavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
         // Tambahkan listener pada saat item/menu bottomnavigation terpilih
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
@@ -41,6 +45,9 @@ public class BuyerActivity extends AppCompatActivity implements BottomNavigation
         switch (menuItem.getItemId()){
             case R.id.home_menu:
                 fragment = new HomeFragment();
+                break;
+            case R.id.order_menu:
+                fragment = new OrderFragment();
                 break;
             case R.id.coupon_menu:
                 fragment = new CouponFragment();

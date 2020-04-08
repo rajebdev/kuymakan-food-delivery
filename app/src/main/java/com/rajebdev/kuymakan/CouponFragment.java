@@ -1,17 +1,10 @@
 package com.rajebdev.kuymakan;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,33 +16,26 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class CouponFragment extends Fragment {
-    private View view;
-    private BottomSheetDialog sheetDialog;
 
     @NonNull
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_coupon, container, false);
+        View view = inflater.inflate(R.layout.fragment_coupon, container, false);
 
         // Set Click Button New Coupon
         ImageButton btnAddNewCoupon = view.findViewById(R.id.btn_add_coupon);
         btnAddNewCoupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragmentNewCoupon dialogFragmentNewCoupon = new DialogFragmentNewCoupon();
+                NewCouponDialogFragment dialogFragmentNewCoupon = new NewCouponDialogFragment();
                 assert getFragmentManager() != null;
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
-                dialogFragmentNewCoupon.show(ft, DialogFragmentNewCoupon.TAG);
+                dialogFragmentNewCoupon.show(ft, NewCouponDialogFragment.TAG);
             }
         });
-
 
         // Set Data For Recycle View
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -69,47 +55,18 @@ public class CouponFragment extends Fragment {
                                     "Berlaku hingga 8 April 2020"
                             ));
         }
-
         ListAdapter mListadapter = new ListAdapter(data);
         mRecyclerView.setAdapter(mListadapter);
 
         return view;
     }
 
-    private int getWindowHeight() {
-        // Calculate window height for fullscreen use
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        ((Activity) Objects.requireNonNull(getContext())).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        return displayMetrics.heightPixels;
-    }
-
-    private void showCouponDetailSheet(CouponData couponData)
+    private void showCouponDetail(CouponData couponData)
     {
-        View containerSheet = view.findViewById(R.id.coupon_detail_sheet);
-        BottomSheetBehavior sheetBehavior = BottomSheetBehavior.from(containerSheet);
-        @SuppressLint("InflateParams") View viewSheet = getLayoutInflater().inflate(R.layout.sheet_coupon_detail, null);
-
-        viewSheet.findViewById(R.id.btn_close_coupon_detail).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                sheetDialog.dismiss();
-            }
-        });
-
-        if (sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
-            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-        }
-        sheetDialog = new BottomSheetDialog(Objects.requireNonNull(view.getContext()));
-        sheetDialog.setContentView(viewSheet);
-        Objects.requireNonNull(sheetDialog.getWindow()).addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-        sheetDialog.show();
-        sheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                sheetDialog = null;
-            }
-        });
+        CouponDetailDialogFragment dialogFragmentNewCoupon = new CouponDetailDialogFragment();
+        assert getFragmentManager() != null;
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        dialogFragmentNewCoupon.show(ft, CouponDetailDialogFragment.TAG);
     }
 
     public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>
@@ -157,13 +114,13 @@ public class CouponFragment extends Fragment {
             }
             holder.itemView.setLayoutParams(params);
 
+            // Set Onclick coupon
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showCouponDetailSheet(dataList.get(position));
+                    showCouponDetail(dataList.get(position));
                 }
             });
-
 
             // Setter Text
             holder.nameCoupon.setText(dataList.get(position).getName());

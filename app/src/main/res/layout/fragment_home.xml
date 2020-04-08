@@ -28,41 +28,77 @@
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/ic_my_location_black_24dp">
             <FrameLayout
-                android:id="@+id/btn_delivery_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
                 >
                 <LinearLayout
+                    android:id="@+id/btn_delivery_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_gravity="start"
                     tools:ignore="RelativeOverlap">
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/pilih_lokasi"
-                        android:textSize="12sp"
-                        android:textColor="#ff0033"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pilih_lokasi"
+                            android:textSize="12sp"
+                            android:textColor="#555"/>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+                            tools:ignore="ContentDescription"
+                            android:tint="#ff0033"/>
+                    </LinearLayout>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bakalan_sumobito"
                         android:textColor="#333"
                         android:textStyle="bold"
-                        android:textSize="18sp"/>
+                        android:textSize="14sp"/>
 
                 </LinearLayout>
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
-                    tools:ignore="ContentDescription"
-                    android:layout_gravity="end|center_vertical"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="end|center">
+
+                    <ImageButton
+                        android:id="@+id/btn_favorite_food"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_favorite_border_black_24dp"
+                        android:background="@null"
+                        tools:ignore="ContentDescription"/>
+
+                </LinearLayout>
 
             </FrameLayout>
         </androidx.appcompat.widget.Toolbar>
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_food"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="-5dp"
+            android:paddingEnd="-5dp"
+            android:background="@color/colorLightGrey"
+            app:iconifiedByDefault="false"
+            app:queryHint="Mau makan apa hari ini?"
+            android:theme="@style/AppSearchView"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
@@ -85,22 +121,89 @@
                 android:elevation="5dp">
             </ViewFlipper>
 
-            <HorizontalScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="none"
-                android:overScrollMode="never">
-                <LinearLayout
-                    android:id="@+id/food_slider_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:orientation="horizontal"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="5dp"
-                    android:layout_marginTop="15dp">
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pilih_kategori"
+                    android:textSize="14sp"
+                    android:layout_marginStart="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#000"/>
+                <GridLayout
+                    android:id="@+id/grid_category_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:columnCount="3"
+                    android:rowCount="3"
+                    tools:context=".GridXMLActivity">
 
-                </LinearLayout>
-            </HorizontalScrollView>
+                </GridLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#888"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/aneka_kuliner_menarik"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#000"/>
+
+                    <TextView
+                        android:id="@+id/btn_view_all_food_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lihat_semua"
+                        android:textSize="14sp"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="@color/colorPrimary"/>
+                </RelativeLayout>
+
+                <HorizontalScrollView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:overScrollMode="never">
+                    <LinearLayout
+                        android:id="@+id/food_slider_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:orientation="horizontal"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="15dp">
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#888"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
 
 
             <TextView

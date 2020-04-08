@@ -18,12 +18,19 @@
 
         <item name="android:windowIsFloating">false</item>
 
+        <!-- Set auto resize screen-->
+        <item name="android:windowSoftInputMode">adjustResize</item>
+
         <!-- This is important! Don't forget to set window background -->
         <item name="android:windowBackground">@color/colorLight</item>
 
         <!-- Additionally if you want animations when dialog opening -->
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView" >
+        <item name="android:textSize">13sp</item>
     </style>
 
 

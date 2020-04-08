@@ -10,5 +10,7 @@
     <color name="colorNavigationIcon">#999</color>
     <color name="colorNavigationText">#999</color>
 
+    <color name="colorLightGrey">#f2efed</color>
+
 </resources>
 
