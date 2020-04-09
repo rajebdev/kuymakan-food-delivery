@@ -70,10 +70,8 @@ public class HomeFragment extends Fragment {
         btnFavoriteFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FavoriteFoodListDialogFragment favoriteFoodListDialogFragment = new FavoriteFoodListDialogFragment();
                 assert getFragmentManager() != null;
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                favoriteFoodListDialogFragment.show(ft, FavoriteFoodListDialogFragment.TAG);
+                new FavoriteFoodListDialogFragment().show(getFragmentManager().beginTransaction(), FavoriteFoodListDialogFragment.TAG);
             }
         });
 

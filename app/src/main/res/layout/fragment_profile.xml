@@ -106,44 +106,7 @@
                     android:text="Akun"
                     android:textColor="#000"/>
 
-                <RelativeLayout
-                    android:id="@+id/btn_profile_order"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="26dp"
-                            android:src="@drawable/ic_shopping_cart_black_24dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#000"
-                            android:layout_gravity="center"
-                            android:text="Pesanan"/>
-
-
-                    </LinearLayout>
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
-                        android:layout_alignParentEnd="true"/>
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:background="#888"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"/>
 
                 <RelativeLayout
                     android:id="@+id/btn_profile_new_coupon"
@@ -184,7 +147,7 @@
                     android:layout_marginBottom="5dp"/>
 
                 <RelativeLayout
-                    android:id="@+id/btn_profile_coupon"
+                    android:id="@+id/btn_profile_invite_friends"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
@@ -196,14 +159,14 @@
                         <ImageView
                             android:layout_width="36dp"
                             android:layout_height="26dp"
-                            android:src="@drawable/ic_coupon"/>
+                            android:src="@drawable/ic_people_outline_black_24dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#000"
                             android:layout_gravity="center"
-                            android:text="Voucher Saya"/>
+                            android:text="@string/ajak_teman_pakai_kuymakan"/>
 
 
                     </LinearLayout>

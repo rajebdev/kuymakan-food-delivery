@@ -38,7 +38,8 @@
             android:id="@+id/rv_order_list"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            tools:listitem="@layout/item_row_order"/>
+            tools:listitem="@layout/item_row_order"
+            android:background="@color/colorLight"/>
 
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

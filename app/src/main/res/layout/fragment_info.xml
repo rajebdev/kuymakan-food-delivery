@@ -37,7 +37,8 @@
             android:id="@+id/rv_info_list"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            tools:listitem="@layout/item_row_info"/>
+            tools:listitem="@layout/item_row_info"
+            android:background="@color/colorLight"/>
 
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

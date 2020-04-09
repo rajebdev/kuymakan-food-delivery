@@ -30,10 +30,8 @@ public class CouponFragment extends Fragment {
         btnAddNewCoupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NewCouponDialogFragment dialogFragmentNewCoupon = new NewCouponDialogFragment();
                 assert getFragmentManager() != null;
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                dialogFragmentNewCoupon.show(ft, NewCouponDialogFragment.TAG);
+                new NewCouponDialogFragment().show(getFragmentManager().beginTransaction(), NewCouponDialogFragment.TAG);
             }
         });
 

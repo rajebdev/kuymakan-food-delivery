@@ -12,5 +12,7 @@
 
     <color name="colorLightGrey">#f2efed</color>
 
+    <color name="colorTextDark">#000</color>
+
 </resources>
 

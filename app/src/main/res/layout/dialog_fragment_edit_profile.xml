@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorLight"
+            android:elevation="5dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+                app:title="Edit Profile"
+                app:titleTextColor="#000">
+                <TextView
+                    android:id="@+id/btn_clear_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:text="@string/simpan"
+                    android:background="@drawable/border_green"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_gravity="end"/>
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="@string/nama"
+                    android:textColor="@color/colorTextDark"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="@string/dummy_profile_name"
+                    android:textColor="@color/colorTextDark"
+                    android:backgroundTint="@color/colorLight"
+                    android:inputType="text" />
+
+            </LinearLayout>
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_clear_black_24dp"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="-15dp"
+            android:background="#888"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorTextDark"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/admin_support_kuymakan_com"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorTextDark"
+                    android:backgroundTint="@color/colorLight"
+                    android:inputType="textEmailAddress" />
+
+            </LinearLayout>
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_clear_black_24dp"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="-15dp"
+            android:background="#888"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="@string/nomor_telepon"
+                    android:textColor="@color/colorTextDark"/>
+
+                <EditText
+                    android:id="@+id/phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:text="@string/dummy_profile_phone"
+                    android:textColor="@color/colorTextDark"
+                    android:backgroundTint="@color/colorLight"
+                    android:inputType="phone" />
+
+            </LinearLayout>
+            <ImageButton
+                android:id="@+id/btn_clear_phone"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_clear_black_24dp"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="-15dp"
+            android:background="#888"/>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

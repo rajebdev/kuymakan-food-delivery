@@ -5,14 +5,12 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.text.InputFilter;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;

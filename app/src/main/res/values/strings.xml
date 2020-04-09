@@ -62,4 +62,15 @@
     <string name="dummy_profile_name">Wijanarko Putra Rajeb</string>
     <string name="dummy_profile_phone">+628585858585</string>
     <string name="admin_support_kuymakan_com">admin.support@kuymakan.com</string>
+    <string name="simpan">Simpan</string>
+    <string name="nama">Nama</string>
+    <string name="nomor_telepon">Nomor telepon</string>
+    <string name="email">Email</string>
+    <string name="wijanarko_rajeb_gmail_com">wijanarko.rajeb@gmail.com</string>
+    <string name="nim">170411100061</string>
+    <string name="ppb">Pemrograman Perangkat Bergerak</string>
+    <string name="kelas_d">Kelas D</string>
+    <string name="https_rajebdev_github_io">https://rajebdev.github.io</string>
+    <string name="ajak_teman_pakai_kuymakan">Ajak teman pakai KuyMakan</string>
+    <string name="desc_invite">Biar mereka juga ngerasain enaknnya dibantuin ini itu sama KuyMakan.</string>
 </resources>
