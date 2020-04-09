@@ -20,7 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
 
-public class RestauranDiscountFullBottomSheetDialogFragment extends BottomSheetDialogFragment {
+public class RestaurantDiscountFullBottomSheetDialogFragment extends BottomSheetDialogFragment {
 
     private BottomSheetBehavior mBehavior;
 

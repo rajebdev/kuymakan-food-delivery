@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="275dp"
-    android:layout_height="match_parent"
+    android:layout_height="150dp"
     android:background="@drawable/rounder_corner_green_dark"
     android:padding="15dp"
-    android:layout_marginEnd="15dp"
+    android:layout_margin="15dp"
     tools:ignore="UselessParent"
-    android:tag="background_featured">
+    android:id="@+id/background_featured">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

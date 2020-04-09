@@ -32,10 +32,8 @@ public class OrderFragment extends Fragment {
         btnOrderHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OrderHistoryDialogFragment orderHistoryDialogFragment = new OrderHistoryDialogFragment();
                 assert getFragmentManager() != null;
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                orderHistoryDialogFragment.show(ft, OrderHistoryDialogFragment.TAG);
+                new OrderHistoryDialogFragment().show(getFragmentManager().beginTransaction(), OrderHistoryDialogFragment.TAG);
             }
         });
 

@@ -12,7 +12,7 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Objects;
 
-public class RestauranMapsDialogFragment extends DialogFragment {
+public class RestaurantMapsDialogFragment extends DialogFragment {
 
     static String TAG = "FullScreenDialog";
 

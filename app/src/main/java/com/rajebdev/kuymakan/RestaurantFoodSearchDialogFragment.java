@@ -12,7 +12,7 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Objects;
 
-public class RestauranDialogFragment extends DialogFragment {
+public class RestaurantFoodSearchDialogFragment extends DialogFragment {
 
     static String TAG = "FullScreenDialog";
 
@@ -25,7 +25,7 @@ public class RestauranDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.dialog_fragment_restauran, container, false);
+        View view = inflater.inflate(R.layout.dialog_fragment_restauran_food_search, container, false);
 
         // Tombol Close
         Toolbar toolbar = view.findViewById(R.id.toolbar);

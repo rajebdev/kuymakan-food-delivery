@@ -22,10 +22,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class HomeFragment extends Fragment {
@@ -47,6 +50,9 @@ public class HomeFragment extends Fragment {
         // Set Flipper Image Slider
         setFlipperImageSlider(view);
 
+        // Setup Recycle view Food Type
+        setUpRecycleViewFoodType(view);
+
         // Start Fragment Transaction
         FragmentTransaction ft = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
 
@@ -55,6 +61,10 @@ public class HomeFragment extends Fragment {
 
         // Commit Fragment Transaction
         ft.commit();
+
+
+        // Setup Recycle view Food Type
+        setUpRecycleViewFeatured(view);
 
         //  Set Delivery sheet
         View btnDeliveryLocation = view.findViewById(R.id.btn_delivery_location);
@@ -120,15 +130,40 @@ public class HomeFragment extends Fragment {
         // End Flipper Image
     }
 
-    private void loadAllFragment(FragmentTransaction ft){
+    private void setUpRecycleViewFoodType(View view) {
+        // Set Data For Recycle View
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        RecyclerView mRecyclerView = view.findViewById(R.id.rv_food_type_slider);
+        mRecyclerView.setLayoutManager(layoutManager);
 
-        // Start Food Slider
-        for (int i=0; i < 5; i++)
+        ArrayList<FoodTypeData> data = new ArrayList<>();
+        for (int i = 0; i < 10; i++)
         {
-            Fragment itemFoodSlider = new FoodTypeSliderFragment();
-            ft.add(R.id.food_slider_container, itemFoodSlider);
+            data.add(new FoodTypeData());
         }
-        // End Food Slider
+        FoodTypeListAdapter mListadapter = new FoodTypeListAdapter(data, this);
+        mRecyclerView.setAdapter(mListadapter);
+    }
+
+    private void setUpRecycleViewFeatured(View view) {
+        // Set Data For Recycle View
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        RecyclerView mRecyclerView = view.findViewById(R.id.rv_featured_slider);
+        mRecyclerView.setLayoutManager(layoutManager);
+
+        ArrayList<FeaturedData> data = new ArrayList<>();
+        for (int i = 0; i < 10; i++)
+        {
+            data.add(new FeaturedData());
+        }
+        FeaturedListAdapter mListadapter = new FeaturedListAdapter(data, this);
+        mRecyclerView.setAdapter(mListadapter);
+    }
+
+
+    private void loadAllFragment(FragmentTransaction ft){
 
         // Start Group Menu Slider
         for (int i=0; i < 9; i++)
@@ -141,18 +176,10 @@ public class HomeFragment extends Fragment {
         // Start Group Menu Slider
         for (int i=0; i < 5; i++)
         {
-            Fragment itemGroupMenuSlider = new GroupSliderMenuFragment(View.generateViewId());
+            Fragment itemGroupMenuSlider = new GroupSliderMenuFragment();
             ft.add(R.id.group_slider, itemGroupMenuSlider);
         }
         // End Group Menu Slider
-
-        // Start Featured Slider
-        for (int i=0; i < 5; i++)
-        {
-            Fragment itemFeaturedSlider = new FeaturedSliderFragment();
-            ft.add(R.id.featured_slider_container, itemFeaturedSlider);
-        }
-        // End Featured Slider
     }
 
 }

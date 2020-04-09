@@ -15,8 +15,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,23 +52,12 @@
             android:textColor="#555"
             android:textSize="12sp"/>
 
-        <HorizontalScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_food_menu_slider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none"
-            android:overScrollMode="never">
-            <LinearLayout
-                android:tag="food_container_tag"
-                android:layout_width="wrap_content"
-                android:layout_height="350dp"
-                android:orientation="horizontal"
-                android:paddingStart="15dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                tools:ignore="RtlSymmetry">
-
-            </LinearLayout>
-        </HorizontalScrollView>
+            android:layout_marginTop="10dp"
+            tools:listitem="@layout/item_col_food_menu_slider"/>
 
 
     </LinearLayout>
