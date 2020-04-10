@@ -14,5 +14,12 @@
 
     <color name="colorTextDark">#000</color>
 
+    <color name="colorBgDark">#000</color>
+
+
+    <color name="colorDarkPart">#77000000</color>
+
+    <color name="colorGreenButton">#25cf77</color>
+
 </resources>
 

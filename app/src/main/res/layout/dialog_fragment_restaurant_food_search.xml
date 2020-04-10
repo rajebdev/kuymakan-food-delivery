@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorLight"
+            android:elevation="5dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_food_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_margin="15dp"
+                    android:paddingStart="-5dp"
+                    android:paddingEnd="-5dp"
+                    android:focusable="true"
+                    android:background="@color/colorLightGrey"
+                    app:iconifiedByDefault="false"
+                    app:searchIcon="@drawable/ic_arrow_back_black_24dp"
+                    app:queryHint="Cari menu apa?"
+                    app:closeIcon="@drawable/ic_clear_black_24dp"
+                    android:theme="@style/AppSearchView"/>
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_food_search_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_row_item_food"/>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

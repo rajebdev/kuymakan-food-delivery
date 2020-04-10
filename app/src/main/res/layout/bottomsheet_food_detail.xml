@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="15dp"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_drop_down_black_24dp"
+            android:layout_gravity="center"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/slider4"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:id="@+id/food_detail_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/salad_buah_200ml_rasa_white_cofee"
+                android:layout_marginEnd="75dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="14sp"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_share_food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+                app:cardCornerRadius="5dp"
+                android:elevation="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/share"
+                    android:textColor="#fff"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@color/colorGreenButton"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/item_food_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/isi_semangka_apel_melon_buah_pir_dan_anggur"
+            android:textColor="#888"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.01dp"
+            android:background="#ccc"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/harga_makanan"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/food_detail_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_6_500"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_add_to_cart"
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="40dp"
+            android:text="@string/tambah_pesanan"
+            android:background="@drawable/rounder_corner_green"
+            android:textColor="#fff"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+</LinearLayout>
