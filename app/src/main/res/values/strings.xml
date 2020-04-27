@@ -89,4 +89,31 @@
     <string name="harga_makanan">Harga Makanan</string>
     <string name="_42_000">42.000</string>
     <string name="tambah_pesanan">Tambah Pesanan</string>
+    <string name="kirim_otp">KIRIM OTP</string>
+    <string name="no_hp">No HP</string>
+    <string name="masukkan_nomor_hp_yang_terdaftar">Masukkan Nomor HP yang terdaftar</string>
+    <string name="tidak_bisa_mengakses_no_hp_anda_yang_tedaftar">Tidak bisa mengakses no. HP Anda yang tedaftar ?</string>
+    <string name="hubungi_kami">HUBUNGI KAMI</string>
+    <string name="notice_otp">Masukkan kode verifikasi yang telah kami SMS ke no HP Anda yang terdaftar. JANGAN berikan kode kepada SIAPAPUN</string>
+    <string name="kirim_ulang_kode_dalam_00_59">Kirim ulang kode dalam 00:59</string>
+    <string name="flash_info">Oops, kode OTP yang Anda masukkan tidak valid.</string>
+    <string name="promo">Promo</string>
+    <string name="transaction">Transaksi</string>
+    <string name="diskon_menu_detail">Beri diskon pada satu menu unutk tingkatkan voume transaksi restomu.</string>
+    <string name="diskon_belanja_detail">Beri diskon dengan syarat min. pembelian untuk tingkatkan nilai rata-rata pembelian pelanggan.</string>
+    <string name="help">Bantuan</string>
+    <string name="my_outlet">Outlet saya</string>
+    <string name="out_of_stock">Stok habis</string>
+    <string name="menu">Menu</string>
+    <string name="withdraw">Pencairan</string>
+    <string-array name="list_country_id">
+        <item>+62</item>
+        <item>+01</item>
+        <item>+32</item>
+        <item>+43</item>
+    </string-array>
+    <string-array name="list_user_types">
+        <item>BUYER</item>
+        <item>RESTAURANT</item>
+    </string-array>
 </resources>

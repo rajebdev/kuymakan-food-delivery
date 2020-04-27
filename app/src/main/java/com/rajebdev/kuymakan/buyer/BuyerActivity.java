@@ -5,15 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rajebdev.kuymakan.R;
-import com.rajebdev.kuymakan.coupon.CouponFragment;
-import com.rajebdev.kuymakan.info.InfoFragment;
-import com.rajebdev.kuymakan.order.OrderFragment;
+import com.rajebdev.kuymakan.buyer.menu.CouponFragment;
+import com.rajebdev.kuymakan.buyer.menu.InfoFragment;
+import com.rajebdev.kuymakan.buyer.menu.HomeFragment;
+import com.rajebdev.kuymakan.buyer.menu.ProfileFragment;
+import com.rajebdev.kuymakan.buyer.menu.OrderFragment;
 
 public class BuyerActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+    private int countBack = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +50,13 @@ public class BuyerActivity extends AppCompatActivity implements BottomNavigation
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
         switch (menuItem.getItemId()){
-            case R.id.home_menu:
+            case R.id.order_menu:
                 fragment = new HomeFragment();
                 break;
-            case R.id.order_menu:
+            case R.id.transaction_menu:
                 fragment = new OrderFragment();
                 break;
-            case R.id.coupon_menu:
+            case R.id.promo_menu:
                 fragment = new CouponFragment();
                 break;
             case R.id.info_menu:
@@ -61,5 +67,25 @@ public class BuyerActivity extends AppCompatActivity implements BottomNavigation
                 break;
         }
         return loadFragment(fragment);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch(keyCode)
+        {
+            case KeyEvent.KEYCODE_BACK:
+                if (countBack > 0) {
+                    this.finishAffinity();
+                } else {
+                    countBack++;
+                    Toast.makeText(getApplicationContext(), "Tekan Sekali lagi untuk Keluar Aplikasi", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case KeyEvent.ACTION_DOWN:
+                break;
+            default:
+                return false;
+        }
+        return true;
     }
 }
