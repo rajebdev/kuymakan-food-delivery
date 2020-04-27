@@ -38,7 +38,7 @@
                         android:layout_alignParentEnd="true">
 
                         <ImageButton
-                            android:id="@+id/btn_search"
+                            android:id="@+id/btn_search_order"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_search_black_24dp"
@@ -47,7 +47,7 @@
                             android:layout_marginEnd="10dp"/>
 
                         <ImageButton
-                            android:id="@+id/btn_ring"
+                            android:id="@+id/btn_ringtone_order"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_volume_up_black_24dp"

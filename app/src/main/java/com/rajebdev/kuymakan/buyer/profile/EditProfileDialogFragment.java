@@ -38,8 +38,6 @@ public class EditProfileDialogFragment extends DialogFragment {
             }
         });
 
-
-
         return view;
     }
 

@@ -25,7 +25,7 @@ import com.rajebdev.kuymakan.R;
 import com.rajebdev.kuymakan.buyer.favoritefood.FavoriteFoodListDialogFragment;
 import com.rajebdev.kuymakan.buyer.featured.FeaturedData;
 import com.rajebdev.kuymakan.buyer.featured.FeaturedListAdapter;
-import com.rajebdev.kuymakan.foodcategory.CategoryFragment;
+import com.rajebdev.kuymakan.buyer.foodcategory.CategoryFragment;
 import com.rajebdev.kuymakan.buyer.foodslider.GroupSliderMenuFragment;
 import com.rajebdev.kuymakan.buyer.foodtype.FoodTypeData;
 import com.rajebdev.kuymakan.buyer.foodtype.FoodTypeListAdapter;

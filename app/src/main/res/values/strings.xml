@@ -106,6 +106,8 @@
     <string name="out_of_stock">Stok habis</string>
     <string name="menu">Menu</string>
     <string name="withdraw">Pencairan</string>
+    <string name="detail">Rincian</string>
+    <string name="warning_upload_image">Ketentuan upload: Harus foto makanan tanpa watermark (jangan cuma upload logo restoran aja, ya). Jika foto yang diupload tidak sesuai, tim Makan makan berhak menggantinya.</string>
     <string-array name="list_country_id">
         <item>+62</item>
         <item>+01</item>

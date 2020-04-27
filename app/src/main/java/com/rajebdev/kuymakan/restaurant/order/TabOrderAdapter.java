@@ -5,10 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.rajebdev.kuymakan.restaurant.order.CancelFragment;
-import com.rajebdev.kuymakan.restaurant.order.FinishFragment;
-import com.rajebdev.kuymakan.restaurant.order.ProsesFragment;
-
 public class TabOrderAdapter extends FragmentStatePagerAdapter {
 
     private int mNumOfTabs;

@@ -14,12 +14,17 @@ import androidx.fragment.app.Fragment;
 
 import com.rajebdev.kuymakan.R;
 import com.rajebdev.kuymakan.other.AboutUsDialogFragment;
+import com.rajebdev.kuymakan.buyer.profile.HelpDialogFragment;
+import com.rajebdev.kuymakan.restaurant.foodmenu.FoodMenuDialogFragment;
+import com.rajebdev.kuymakan.restaurant.outlet.OutletDialogFragment;
+import com.rajebdev.kuymakan.restaurant.stock.StockDialogFragment;
+import com.rajebdev.kuymakan.restaurant.withdraw.WithdrawDialogFragment;
 
-public class ProfileFragment  extends Fragment {
+public class OtherFragment extends Fragment {
     @NonNull
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_restaurant_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_restaurant_other, container, false);
 
         // btn version about us
         View btnAboutUs = view.findViewById(R.id.btn_about_us);
@@ -58,10 +63,46 @@ public class ProfileFragment  extends Fragment {
 
         // btn withdraw
         View btnWithdraw = view.findViewById(R.id.btn_withdraw);
+        btnWithdraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new WithdrawDialogFragment().show(getChildFragmentManager().beginTransaction(), WithdrawDialogFragment.TAG);
+            }
+        });
+
+        // Btn food menu
         View btnMenu = view.findViewById(R.id.btn_menu);
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new FoodMenuDialogFragment().show(getChildFragmentManager().beginTransaction(), FoodMenuDialogFragment.TAG);
+            }
+        });
         View btnStock = view.findViewById(R.id.btn_stock);
+        btnStock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new StockDialogFragment().show(getChildFragmentManager().beginTransaction(), StockDialogFragment.TAG);
+            }
+        });
+
+        // Btn Outlet
         View btnOutlet = view.findViewById(R.id.btn_outlet);
+        btnOutlet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new OutletDialogFragment().show(getChildFragmentManager().beginTransaction(), OutletDialogFragment.TAG);
+            }
+        });
+
+        // Btn help
         View btnHelp = view.findViewById(R.id.btn_help);
+        btnHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new HelpDialogFragment().show(getChildFragmentManager().beginTransaction(), HelpDialogFragment.TAG);
+            }
+        });
 
         return view;
     }

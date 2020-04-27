@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="15dp"
-        android:src="@drawable/gofood"/>
+        android:src="@drawable/kuymakan"/>
 
     <TextView
         android:layout_width="match_parent"

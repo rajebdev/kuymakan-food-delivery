@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rajebdev.kuymakan.R;
-import com.rajebdev.kuymakan.food.FoodData;
+import com.rajebdev.kuymakan.buyer.food.FoodData;
 import com.rajebdev.kuymakan.buyer.restaurant.RestaurantDialogFragment;
 
 import java.util.ArrayList;

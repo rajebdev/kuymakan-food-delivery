@@ -18,8 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".buyer.BuyerActivity" />
-        <activity android:name=".restaurant.RestaurantActivity" >
+        <activity android:name=".buyer.BuyerActivity">
+        </activity>
+        <activity android:name=".restaurant.RestaurantActivity">
         </activity>
     </application>
 

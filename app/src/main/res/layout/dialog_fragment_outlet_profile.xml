@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorLight">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Profil Restoran"
+                app:titleTextColor="@color/colorTextDark"
+                app:navigationIcon="@drawable/ic_arrow_back_black_24dp">
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Banner restoran"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="@color/colorTextDark"/>
+
+            <Button
+                android:id="@+id/btn_change_banner"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/border_red"
+                android:textAlignment="center"
+                android:text="Ubah"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:textColor="#ff0033"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/dummy_seller_image"
+            android:scaleType="centerCrop"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/warning_upload_image"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextDark"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kategori makanan"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="@color/colorTextDark"/>
+
+            <Button
+                android:id="@+id/btn_change_restaurant_category"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/border_red"
+                android:textAlignment="center"
+                android:text="Ubah"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:textColor="#ff0033"/>
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:background="@android:color/holo_red_light"
+            android:text="Makan Nasi"
+            android:padding="10dp"
+            android:textColor="@color/colorLight"/>
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

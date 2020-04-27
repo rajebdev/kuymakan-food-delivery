@@ -1,4 +1,4 @@
-package com.rajebdev.kuymakan.food;
+package com.rajebdev.kuymakan.buyer.food;
 
 public class FoodData {
     private int id;

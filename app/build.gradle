@@ -35,4 +35,5 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.shuhart.stickyheader:stickyheader:1.0.6'
     implementation "com.github.skydoves:powerspinner:1.0.6"
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 }

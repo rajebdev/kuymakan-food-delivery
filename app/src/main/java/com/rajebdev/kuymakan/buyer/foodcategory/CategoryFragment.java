@@ -1,4 +1,4 @@
-package com.rajebdev.kuymakan.foodcategory;
+package com.rajebdev.kuymakan.buyer.foodcategory;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

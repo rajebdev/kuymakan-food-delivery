@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorLight">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Tambah kategori"
+                app:titleTextColor="@color/colorTextDark"
+                app:navigationIcon="@drawable/ic_arrow_back_black_24dp">
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:elevation="5dp"
+            android:background="@color/colorLight">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama"
+                android:textStyle="bold"
+                android:textColor="@color/colorTextDark"/>
+
+            <EditText
+                android:id="@+id/food_menu_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextDark"
+                android:backgroundTint="#888"
+                android:hint="Cth: Minuman, Paket Kenyang"
+                android:textColorHint="#888"
+                android:inputType="text|textMultiLine"
+                android:maxLength="150"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 / 150"
+                android:layout_gravity="end"
+                android:textSize="12sp"
+                android:textColor="@color/colorTextDark"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:elevation="5dp"
+            android:background="@color/colorLight">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga"
+                android:textStyle="bold"
+                android:textColor="@color/colorTextDark"/>
+
+            <EditText
+                android:id="@+id/food_menu_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextDark"
+                android:backgroundTint="#888"
+                android:hint="Cth: 18000"
+                android:textColorHint="#888"
+                android:inputType="number"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 / 150"
+                android:layout_gravity="end"
+                android:textSize="12sp"
+                android:textColor="@color/colorTextDark"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:elevation="5dp"
+            android:background="@color/colorLight">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aktifkan di Menu Restaurant"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorTextDark"/>
+
+                <Switch
+                    android:id="@+id/switch_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:thumbTint="@color/swith_color"
+                    android:trackTint="@color/swith_color"
+                    android:checked="true"
+                    android:textColor="@android:color/holo_red_light"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:text="Kategori menu yang aktif akan muncul di Food Menu Restaurant"
+                android:textSize="12sp"
+                android:textColor="@color/colorTextDark"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:padding="15dp"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_save_food_menu"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:text="@string/simpan"
+                android:textStyle="bold"
+                android:background="@android:color/holo_red_light"
+                android:textColor="#fff"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

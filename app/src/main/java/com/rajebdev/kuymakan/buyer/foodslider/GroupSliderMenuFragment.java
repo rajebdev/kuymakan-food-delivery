@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rajebdev.kuymakan.R;
 import com.rajebdev.kuymakan.utils.RandomColor;
-import com.rajebdev.kuymakan.food.FoodData;
+import com.rajebdev.kuymakan.buyer.food.FoodData;
 
 import java.util.ArrayList;
 

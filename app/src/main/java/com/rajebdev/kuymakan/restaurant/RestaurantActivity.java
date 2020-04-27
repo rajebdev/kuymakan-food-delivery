@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rajebdev.kuymakan.R;
 import com.rajebdev.kuymakan.restaurant.menu.OrderFragment;
-import com.rajebdev.kuymakan.restaurant.menu.ProfileFragment;
+import com.rajebdev.kuymakan.restaurant.menu.OtherFragment;
 import com.rajebdev.kuymakan.restaurant.menu.PromoFragment;
 import com.rajebdev.kuymakan.restaurant.menu.TransactionFragment;
 
@@ -24,7 +24,7 @@ public class RestaurantActivity extends AppCompatActivity implements BottomNavig
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
         // kita set default nya
-        loadFragment(new ProfileFragment());
+        loadFragment(new OrderFragment());
 
         // initialisation BottomNavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -58,7 +58,7 @@ public class RestaurantActivity extends AppCompatActivity implements BottomNavig
                 fragment = new PromoFragment();
                 break;
             case R.id.restaurant_profile_menu:
-                fragment = new ProfileFragment();
+                fragment = new OtherFragment();
                 break;
         }
         return loadFragment(fragment);

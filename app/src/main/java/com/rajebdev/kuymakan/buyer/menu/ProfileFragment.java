@@ -17,7 +17,7 @@ import com.rajebdev.kuymakan.buyer.profile.EditProfileDialogFragment;
 import com.rajebdev.kuymakan.buyer.profile.InviteFriendsDialogFragment;
 import com.rajebdev.kuymakan.buyer.coupon.NewCouponDialogFragment;
 import com.rajebdev.kuymakan.other.AboutUsDialogFragment;
-import com.rajebdev.kuymakan.other.HelpDialogFragment;
+import com.rajebdev.kuymakan.buyer.profile.HelpDialogFragment;
 import com.rajebdev.kuymakan.other.PrivacyDialogFragment;
 
 public class ProfileFragment extends Fragment {
