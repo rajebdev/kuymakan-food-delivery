@@ -48,16 +48,16 @@ public class RestaurantActivity extends AppCompatActivity implements BottomNavig
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
         switch (menuItem.getItemId()){
-            case R.id.order_menu:
+            case R.id.restaurant_order_menu:
                 fragment = new OrderFragment();
                 break;
-            case R.id.transaction_menu:
+            case R.id.restaurant_transaction_menu:
                 fragment = new TransactionFragment();
                 break;
-            case R.id.promo_menu:
+            case R.id.restaurant_promo_menu:
                 fragment = new PromoFragment();
                 break;
-            case R.id.profile_menu:
+            case R.id.restaurant_profile_menu:
                 fragment = new ProfileFragment();
                 break;
         }

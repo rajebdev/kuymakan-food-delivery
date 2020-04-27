@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/order_menu"
+        android:id="@+id/buyer_home_menu"
         android:title="@string/home"
         android:icon="@drawable/ic_explore_black_24dp"/>
 
     <item
-        android:id="@+id/transaction_menu"
+        android:id="@+id/buyer_order_menu"
         android:title="@string/order"
         android:icon="@drawable/ic_shopping_cart_black_24dp"/>
 
     <item
-        android:id="@+id/promo_menu"
+        android:id="@+id/buyer_coupon_menu"
         android:title="@string/coupon"
         android:icon="@drawable/ic_coupon"/>
 
 
     <item
-        android:id="@+id/info_menu"
+        android:id="@+id/buyer_info_menu"
         android:title="@string/info"
         android:icon="@drawable/ic_info"/>
     <item
-        android:id="@+id/profile_menu"
+        android:id="@+id/buyer_profile_menu"
         android:title="@string/profile"
         android:icon="@drawable/ic_person"/>
 </menu>

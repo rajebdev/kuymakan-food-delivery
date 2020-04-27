@@ -50,19 +50,19 @@ public class BuyerActivity extends AppCompatActivity implements BottomNavigation
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
         switch (menuItem.getItemId()){
-            case R.id.order_menu:
+            case R.id.buyer_home_menu:
                 fragment = new HomeFragment();
                 break;
-            case R.id.transaction_menu:
+            case R.id.buyer_order_menu:
                 fragment = new OrderFragment();
                 break;
-            case R.id.promo_menu:
+            case R.id.buyer_coupon_menu:
                 fragment = new CouponFragment();
                 break;
-            case R.id.info_menu:
+            case R.id.buyer_info_menu:
                 fragment = new InfoFragment();
                 break;
-            case R.id.profile_menu:
+            case R.id.buyer_profile_menu:
                 fragment = new ProfileFragment();
                 break;
         }

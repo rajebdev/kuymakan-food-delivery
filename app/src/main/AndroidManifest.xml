@@ -13,13 +13,14 @@
         android:allowBackup="true"
         android:fullBackupContent="true">
         <activity android:name=".auth.MainActivity">
-        </activity>
-        <activity android:name=".buyer.BuyerActivity" />
-        <activity android:name=".restaurant.RestaurantActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
+            </intent-filter>
+        </activity>
+        <activity android:name=".buyer.BuyerActivity" />
+        <activity android:name=".restaurant.RestaurantActivity" >
+        </activity>
     </application>
 
 </manifest>
