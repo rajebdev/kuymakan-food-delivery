@@ -15,7 +15,6 @@
             android:layout_weight="1"
             android:layout_height="0dp">
 
-
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
         <View
             android:layout_width="match_parent"
@@ -29,9 +28,9 @@
             android:layout_gravity="bottom"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             android:background="@color/colorLight"
-            app:menu="@menu/bottom_navigation_menu_buyer"
-            app:itemIconTint="@drawable/state_bnve_green"
-            app:itemTextColor="@drawable/state_bnve_green"
+            app:menu="@menu/bottom_navigation_menu_restaurant"
+            app:itemIconTint="@drawable/state_bnve_red"
+            app:itemTextColor="@drawable/state_bnve_red"
             app:labelVisibilityMode="labeled"/>
     </LinearLayout>
 
