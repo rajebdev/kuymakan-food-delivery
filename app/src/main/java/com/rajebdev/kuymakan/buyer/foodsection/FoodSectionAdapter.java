@@ -2,29 +2,48 @@ package com.rajebdev.kuymakan.buyer.foodsection;
 
 import android.annotation.SuppressLint;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.rajebdev.kuymakan.R;
+import com.rajebdev.kuymakan.RestClient;
 import com.rajebdev.kuymakan.Section;
+import com.rajebdev.kuymakan.buyer.food.FoodData;
+import com.rajebdev.kuymakan.buyer.restaurant.RestaurantData;
+import com.rajebdev.kuymakan.buyer.restaurant.RestaurantResponse;
 import com.shuhart.stickyheader.StickyAdapter;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FoodSectionAdapter extends StickyAdapter<RecyclerView.ViewHolder, RecyclerView.ViewHolder> {
     private Fragment parent;
     public List<Section> items = new ArrayList<>();
 
-    public FoodSectionAdapter(Fragment parent){
+    private RestaurantData restaurantData;
+    private  int restaurantId;
+
+    public ArrayList<FoodData> orderFoods = new ArrayList<>();
+
+    public FoodSectionAdapter(Fragment parent, int restaurantId){
         this.parent = parent;
+        this.restaurantId = restaurantId;
     }
 
     @NonNull
@@ -43,58 +62,77 @@ public class FoodSectionAdapter extends StickyAdapter<RecyclerView.ViewHolder, R
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        int type = items.get(position).type();
-        int section = items.get(position).sectionPosition();
-        if (type == Section.HEADER) {
-            ((HeaderViewholder) holder).textView.setText("Rekomendasi " + section);
-        } else if (type == Section.CUSTOM_HEADER) {
-            //
-        }else if (type == Section.ITEM){
-            final ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
+        RestClient.getService(null).getRestaurant(restaurantId).enqueue(new Callback<RestaurantResponse>() {
+            @Override
+            public void onResponse(Call<RestaurantResponse> call, Response<RestaurantResponse> response) {
+                if (response.isSuccessful()){
+                    restaurantData =  response.body().getRestaurantData();
+                    int type = items.get(position).type();
+                    int section = items.get(position).sectionPosition();
+                    int foodId = items.get(position).getId();
+                    if (type == Section.HEADER) {
+                        ((HeaderViewholder) holder).textView.setText("Rekomendasi " + section);
+                    } else if (type == Section.CUSTOM_HEADER) {
+                        ((HeaderViewholder) holder).restName.setText(restaurantData.getNames());
+                    }else if (type == Section.ITEM){
+                        final ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
+                        itemViewHolder.foodName.setText((restaurantData.getFoods().get(foodId).getNames()));
+                        itemViewHolder.foodPrice.setText(String.valueOf(restaurantData.getFoods().get(foodId).getPrices()));
+                        Glide.with(parent.requireContext()).load("http://192.168.0.103/apikuymakan/img/foods/dummy.png").into(itemViewHolder.foodImage);
+                        // Setup ItemView Click
+                        itemViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                new FoodDetailBottomSheetDialogFragment((restaurantData.getFoods().get(foodId))).show(parent.getChildFragmentManager().beginTransaction(), "Food Detail");
+                            }
+                        });
 
-            // Setup ItemView Click
-            itemViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    assert parent.getFragmentManager() != null;
-                    new FoodDetailBottomSheetDialogFragment().show(parent.getFragmentManager().beginTransaction(), "Food Detail");
-                }
-            });
+                        // Setup Price
+                        if (Integer.parseInt(itemViewHolder.foodPrice.getText().toString().replace(".", "")) > 0){
+                            itemViewHolder.foodDiscountPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                        }
 
-            // Setup Price
-            if (Integer.parseInt(itemViewHolder.foodPrice.getText().toString().replace(".", "")) > 0){
-                itemViewHolder.foodDiscountPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            }
+                        // Setting Button Listener
+                        itemViewHolder.btnAddToCart.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                itemViewHolder.btnAddToCart.setVisibility(View.GONE);
+                                itemViewHolder.btnChangeFoodCount.setVisibility(View.VISIBLE);
+                                orderFoods.add(restaurantData.getFoods().get(foodId));
+                                itemViewHolder.textFoodCount.setText(String.valueOf(Integer.parseInt(itemViewHolder.textFoodCount.getText().toString()) + 1));
+                            }
+                        });
 
-            // Setting Button Listener
-            itemViewHolder.btnAddToCart.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    itemViewHolder.btnAddToCart.setVisibility(View.GONE);
-                    itemViewHolder.btnChangeFoodCount.setVisibility(View.VISIBLE);
-                    itemViewHolder.textFoodCount.setText(String.valueOf(Integer.parseInt(itemViewHolder.textFoodCount.getText().toString()) + 1));
-                }
-            });
+                        itemViewHolder.btnAddFoodCount.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(parent.requireContext(), "Only can order 1 amount of Every Food", Toast.LENGTH_LONG).show();
+                                itemViewHolder.textFoodCount.setText(String.valueOf(Integer.parseInt(itemViewHolder.textFoodCount.getText().toString()) + 0));
+                            }
+                        });
 
-            itemViewHolder.btnAddFoodCount.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    itemViewHolder.textFoodCount.setText(String.valueOf(Integer.parseInt(itemViewHolder.textFoodCount.getText().toString()) + 1));
-                }
-            });
-
-            itemViewHolder.btnSubFoodCount.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int foodCount = Integer.parseInt(itemViewHolder.textFoodCount.getText().toString()) - 1;
-                    itemViewHolder.textFoodCount.setText(String.valueOf(foodCount));
-                    if (foodCount == 0) {
-                        itemViewHolder.btnChangeFoodCount.setVisibility(View.GONE);
-                        itemViewHolder.btnAddToCart.setVisibility(View.VISIBLE);
+                        itemViewHolder.btnSubFoodCount.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                int foodCount = Integer.parseInt(itemViewHolder.textFoodCount.getText().toString()) - 1;
+                                itemViewHolder.textFoodCount.setText(String.valueOf(foodCount));
+                                orderFoods.remove(restaurantData.getFoods().get(foodId));
+                                Log.i("Sub", "onClick: "+orderFoods.size());
+                                if (foodCount == 0) {
+                                    itemViewHolder.btnChangeFoodCount.setVisibility(View.GONE);
+                                    itemViewHolder.btnAddToCart.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        });
                     }
                 }
-            });
-        }
+            }
+
+            @Override
+            public void onFailure(Call<RestaurantResponse> call, Throwable t) {
+            }
+        });
+
     }
 
     @Override
@@ -125,10 +163,12 @@ public class FoodSectionAdapter extends StickyAdapter<RecyclerView.ViewHolder, R
 
     public static class HeaderViewholder extends RecyclerView.ViewHolder {
         TextView textView;
+        TextView restName;
 
         HeaderViewholder(View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.header_food);
+            restName = itemView.findViewById(R.id.restaurant_name_scroll);
         }
     }
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,7 +17,7 @@ public class LoginDialogFragment extends DialogFragment {
     public static String TAG = "FullScreenDialog";
     private int userType;
 
-    LoginDialogFragment(int userType) {
+    public LoginDialogFragment(int userType) {
         this.userType = userType;
     }
 
@@ -31,13 +32,13 @@ public class LoginDialogFragment extends DialogFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.dialog_fragment_login, container, false);
 
+        final EditText edtPhone = view.findViewById(R.id.phone_number);
         // Button SEND OTP
         Button btnSendOTP = view.findViewById(R.id.btn_send_otp);
         btnSendOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                assert getFragmentManager() != null;
-                new OTPDialogFragment(userType).show(getFragmentManager().beginTransaction(), OTPDialogFragment.TAG);
+                new OTPDialogFragment(userType, edtPhone.getText().toString()).show(getChildFragmentManager().beginTransaction(), OTPDialogFragment.TAG);
             }
         });
 

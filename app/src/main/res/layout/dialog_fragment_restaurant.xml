@@ -121,6 +121,15 @@
         android:background="#faf7f7"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_checkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_shopping_cart_black_24dp"
+        android:tint="@color/colorLight"/>
+
     <androidx.cardview.widget.CardView
         android:visibility="gone"
         android:id="@+id/btn_restaurant_menu"

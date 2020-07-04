@@ -3,37 +3,62 @@ package com.rajebdev.kuymakan.buyer.restaurant;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.rajebdev.kuymakan.RestClient;
+import com.rajebdev.kuymakan.buyer.food.FoodData;
 import com.rajebdev.kuymakan.buyer.foodsection.FoodHeaderSection;
 import com.rajebdev.kuymakan.buyer.foodsection.FoodItemSection;
 import com.rajebdev.kuymakan.buyer.foodsection.FoodSectionAdapter;
 import com.rajebdev.kuymakan.R;
 import com.rajebdev.kuymakan.Section;
+import com.rajebdev.kuymakan.buyer.foodtype.FoodTypeData;
+import com.rajebdev.kuymakan.buyer.foodtype.FoodTypeListAdapter;
+import com.rajebdev.kuymakan.buyer.foodtype.FoodTypeRespond;
 import com.shuhart.stickyheader.StickyHeaderItemDecorator;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RestaurantDialogFragment extends DialogFragment {
 
     public static String TAG = TAG = "FullScreenDialog";
 
+    private int restaurantId;
+
+    private RestaurantData restaurantData;
+    private FoodSectionAdapter adapter;
+
+    public RestaurantDialogFragment(int restaurant) {
+        restaurantId = restaurant;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NORMAL, R.style.FullScreenDialogStyle);
+
     }
 
     @Override
@@ -41,8 +66,9 @@ public class RestaurantDialogFragment extends DialogFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         final View view = inflater.inflate(R.layout.dialog_fragment_restaurant, container, false);
 
+
         // Textview Restaurant Name
-        final TextView restaurantName = view.findViewById(R.id.restaurant_name);
+        TextView restaurantName = view.findViewById(R.id.restaurant_name);
 
         // Setup CollapsingToolbarLayout
         final CollapsingToolbarLayout  collapsingToolbarLayout = view.findViewById(R.id.collapsing_toolbar);
@@ -52,8 +78,7 @@ public class RestaurantDialogFragment extends DialogFragment {
         btnRestaurantMaps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                assert getFragmentManager() != null;
-                new RestaurantMapsDialogFragment().show(getFragmentManager().beginTransaction(), RestaurantMapsDialogFragment.TAG);
+                new RestaurantMapsDialogFragment().show(getChildFragmentManager().beginTransaction(), RestaurantMapsDialogFragment.TAG);
             }
         });
 
@@ -83,8 +108,7 @@ public class RestaurantDialogFragment extends DialogFragment {
         btnRestaurantFoodSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                assert getFragmentManager() != null;
-                new RestaurantFoodSearchDialogFragment().show(getFragmentManager().beginTransaction(), RestaurantFoodSearchDialogFragment.TAG);
+                new RestaurantFoodSearchDialogFragment().show(getChildFragmentManager().beginTransaction(), RestaurantFoodSearchDialogFragment.TAG);
             }
         });
 
@@ -103,8 +127,33 @@ public class RestaurantDialogFragment extends DialogFragment {
             }
         });
 
+        RestClient.getService(getContext()).getRestaurant(restaurantId).enqueue(new Callback<RestaurantResponse>() {
+            @Override
+            public void onResponse(Call<RestaurantResponse> call, Response<RestaurantResponse> response) {
+                if (response.isSuccessful()){
+                    restaurantData =  response.body().getRestaurantData();
+                    restaurantName.setText(restaurantData.getNames());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RestaurantResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Gagal Load "+t.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+
         // Setup Recycle View for Food List
         setUpRecycleViewFoodList(view);
+
+        // Button Checkout
+
+        FloatingActionButton btnCheckout = view.findViewById(R.id.btn_checkout);
+        btnCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new OrderListBottomSheetDialogFragment(adapter.orderFoods, restaurantId).show(getChildFragmentManager().beginTransaction(), "Order List");
+            }
+        });
 
         return view;
     }
@@ -113,7 +162,7 @@ public class RestaurantDialogFragment extends DialogFragment {
         RecyclerView recyclerView = view.findViewById(R.id.rv_restaurant_food_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        FoodSectionAdapter adapter = new FoodSectionAdapter(this);
+        adapter = new FoodSectionAdapter(this, restaurantId);
         recyclerView.setAdapter(adapter);
 
         StickyHeaderItemDecorator decorator = new StickyHeaderItemDecorator(adapter);
@@ -122,23 +171,25 @@ public class RestaurantDialogFragment extends DialogFragment {
         adapter.items = new ArrayList<Section>() {{
             int section = 0;
             add(new RestaurantHeaderSection());
-            for (int i = 0; i < 28; i++) {
-                if (i < 12) {
-                    if (i % 4 == 0) {
-                        section = i;
-                        add(new FoodHeaderSection(section));
-                    } else {
-                        add(new FoodItemSection(section));
-                    }
-                } else {
-                    if (i % 8 == 0) {
-                        section = i;
-                        add(new FoodHeaderSection(section));
-                    } else {
-                        add(new FoodItemSection(section));
+            add(new FoodHeaderSection(section));
+            RestClient.getService(getContext()).getRestaurant(restaurantId).enqueue(new Callback<RestaurantResponse>() {
+                @Override
+                public void onResponse(Call<RestaurantResponse> call, Response<RestaurantResponse> response) {
+                    if (response.isSuccessful()){
+                        restaurantData =  response.body().getRestaurantData();
+                        Log.e(TAG, "onResponse: "+ restaurantData.getFoods().size());
+                        for (int i=0; i < restaurantData.getFoods().size(); i++){
+                            FoodItemSection foodItemSection = new FoodItemSection(0, i);
+                            add(foodItemSection);
+                        }
                     }
                 }
-            }
+
+                @Override
+                public void onFailure(Call<RestaurantResponse> call, Throwable t) {
+                    Toast.makeText(getContext(), "Gagal Load "+t.toString(), Toast.LENGTH_LONG).show();
+                }
+            });
         }};
         adapter.notifyDataSetChanged();
     }

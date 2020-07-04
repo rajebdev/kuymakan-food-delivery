@@ -136,6 +136,7 @@
                                 android:textColor="#555"
                                 tools:ignore="SmallSp" />
                             <TextView
+                                android:id="@+id/from_location"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/dummy_nama_penjual"
@@ -175,6 +176,7 @@
                                 android:textColor="#555"
                                 tools:ignore="SmallSp" />
                             <TextView
+                                android:id="@+id/to_location"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/bakalan_sumobito"
@@ -228,6 +230,7 @@
                                 android:layout_marginTop="10dp"
                                 android:textColor="#000"/>
                             <TextView
+                                android:id="@+id/price_estimate"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="31.500"
@@ -266,7 +269,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="-9000"
+                                android:text="0"
                                 android:layout_marginTop="10dp"
                                 android:layout_alignParentEnd="true"
                                 android:textColor="#000"/>
@@ -307,6 +310,7 @@
                                 android:layout_marginTop="10dp"
                                 android:textColor="#000"/>
                             <TextView
+                                android:id="@+id/price_total"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="22.500"

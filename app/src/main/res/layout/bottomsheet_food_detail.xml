@@ -22,6 +22,7 @@
             android:src="@drawable/ic_arrow_drop_down_black_24dp"
             android:layout_gravity="center"/>
         <ImageView
+            android:id="@+id/image_food_detail"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:scaleType="centerCrop"
@@ -106,6 +107,7 @@
         </RelativeLayout>
 
         <Button
+            android:visibility="gone"
             android:id="@+id/btn_add_to_cart"
             android:layout_width="match_parent"
             android:layout_marginTop="15dp"

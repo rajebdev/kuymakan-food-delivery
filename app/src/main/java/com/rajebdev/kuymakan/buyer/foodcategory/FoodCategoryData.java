@@ -1,8 +1,8 @@
-package com.rajebdev.kuymakan.buyer.foodtype;
+package com.rajebdev.kuymakan.buyer.foodcategory;
 
 import com.google.gson.annotations.SerializedName;
 
-public class FoodTypeData {
+public class FoodCategoryData {
 
 	@SerializedName("images")
 	private String images;
@@ -40,7 +40,7 @@ public class FoodTypeData {
 	@Override
  	public String toString(){
 		return 
-			"FoodTypeData{" +
+			"FoodCategoryData{" +
 			"images = '" + images + '\'' + 
 			",id = '" + id + '\'' + 
 			",label = '" + label + '\'' + 

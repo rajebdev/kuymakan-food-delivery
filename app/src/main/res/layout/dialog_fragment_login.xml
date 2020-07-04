@@ -55,6 +55,7 @@
                 android:hint="@string/no_hp"
                 android:textColorHint="#888"
                 android:maxLength="20"
+                android:text="085852838253"
                 android:inputType="phone"
                 android:backgroundTint="#888"
                 android:textColor="@color/colorTextDark"/>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorLight"
+    android:orientation="horizontal"
+    android:padding="15dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardCornerRadius="5dp">
+        <ImageView
+            android:id="@+id/item_image_food"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/slider4"/>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_food_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/salad_buah_200ml_rasa_white_cofee"
+            android:textColor="#000"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/item_food_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/isi_semangka_apel_melon_buah_pir_dan_anggur"
+            android:textColor="#888"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_food_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_6_500"
+                android:textColor="#000"
+                android:textSize="13sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/item_food_discount_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_7_500"
+                android:textColor="#888"
+                android:textSize="13sp"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_change_food_count"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end"
+            android:gravity="center_vertical"
+            android:background="@color/colorLight"
+            android:padding="5dp">
+
+
+            <ImageView
+                android:id="@+id/btn_sub_food_count"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:tint="@color/colorGreenButton"
+                android:src="@drawable/ic_remove_black_24dp"/>
+
+            <TextView
+                android:id="@+id/text_food_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#000"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/btn_add_food_count"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_add"
+                android:tint="@color/colorGreenButton"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

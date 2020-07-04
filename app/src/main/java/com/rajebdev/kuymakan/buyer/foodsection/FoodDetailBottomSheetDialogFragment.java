@@ -5,19 +5,28 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.rajebdev.kuymakan.R;
+import com.rajebdev.kuymakan.buyer.food.FoodData;
 
 public class FoodDetailBottomSheetDialogFragment extends BottomSheetDialogFragment {
 
     private BottomSheetBehavior mBehavior;
+    private FoodData foodData;
+
+    FoodDetailBottomSheetDialogFragment(FoodData foodData) {
+        this.foodData = foodData;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +39,14 @@ public class FoodDetailBottomSheetDialogFragment extends BottomSheetDialogFragme
         BottomSheetDialog dialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
 
         View view = View.inflate(getContext(), R.layout.bottomsheet_food_detail, null);
+
+        TextView foodDetailName = view.findViewById(R.id.food_detail_name);
+        foodDetailName.setText(foodData.getNames());
+        TextView foodPrice = view.findViewById(R.id.food_detail_price);
+        foodPrice.setText(String.valueOf(foodData.getPrices()));
+        ImageView foodImage = view.findViewById(R.id.image_food_detail);
+        Glide.with(requireContext()).load("http://192.168.0.103/apikuymakan/img/foods/dummy.png").into(foodImage);
+
 
         LinearLayout linearLayout = view.findViewById(R.id.root);
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) linearLayout.getLayoutParams();

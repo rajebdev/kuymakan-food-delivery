@@ -1,6 +1,5 @@
-package com.rajebdev.kuymakan.buyer.foodslider;
+package com.rajebdev.kuymakan.buyer.restaurant;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.rajebdev.kuymakan.R;
 import com.rajebdev.kuymakan.buyer.food.FoodData;
-import com.rajebdev.kuymakan.buyer.restaurant.RestaurantDialogFragment;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class FoodMenuListAdapter extends RecyclerView.Adapter<FoodMenuListAdapter.ViewHolder>
+public class OrderCheckoutListAdapter extends RecyclerView.Adapter<OrderCheckoutListAdapter.ViewHolder>
 {
     private Fragment parrent;
-    private List<FoodData> dataList;
+    private ArrayList<FoodData> dataList;
 
-    FoodMenuListAdapter(List<FoodData> data, Fragment parrent)
+    public OrderCheckoutListAdapter(ArrayList<FoodData> data, Fragment parrent)
     {
         this.dataList = data;
         this.parrent = parrent;
@@ -31,18 +29,16 @@ public class FoodMenuListAdapter extends RecyclerView.Adapter<FoodMenuListAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder
     {
-        ImageView imageView;
-        View soldOut;
+        ImageView foodImage;
         TextView foodName;
         TextView foodPrice;
-
+        TextView foodDesc;
         ViewHolder(View itemView)
         {
             super(itemView);
-            imageView = itemView.findViewById(R.id.img_food_menu);
-            soldOut = itemView.findViewById(R.id.sold_out_view);
-            foodName = itemView.findViewById(R.id.food_name);
-            foodPrice = itemView.findViewById(R.id.food_price);
+            foodImage = itemView.findViewById(R.id.item_image_food);
+            foodName = itemView.findViewById(R.id.item_food_name);
+            foodPrice = itemView.findViewById(R.id.item_food_price);
         }
     }
 
@@ -50,7 +46,7 @@ public class FoodMenuListAdapter extends RecyclerView.Adapter<FoodMenuListAdapte
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_col_food_menu_slider, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row_item_food_order, parent, false);
         return new ViewHolder(view);
     }
 
@@ -60,21 +56,15 @@ public class FoodMenuListAdapter extends RecyclerView.Adapter<FoodMenuListAdapte
         // For Last Child Margin
         RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
         if (position == dataList.size()-1){
-            params.rightMargin = 36;
+            params.rightMargin = 40;
         }else{
             params.rightMargin = 0;
         }
         holder.itemView.setLayoutParams(params);
 
-        Glide.with(this.parrent.requireContext()).load("http://192.168.0.103/apikuymakan/img/foods/dummy.png").into(holder.imageView);
-        if (dataList.get(position).getStock() > 0){
-            holder.soldOut.setVisibility(View.GONE);
-        }
         holder.foodName.setText(dataList.get(position).getNames());
-        Log.i("Food Menu", "onBindViewHolder: "+dataList.get(position));
-        holder.foodPrice.setText("IDR " + dataList.get(position).getPrices());
-
-        final int restaurantid = dataList.get(position).getRestaurantId();
+        holder.foodPrice.setText(String.valueOf(dataList.get(position).getPrices()));
+        Glide.with(parrent.requireContext()).load("http://192.168.0.103/apikuymakan/img/foods/dummy.png").into(holder.foodImage);
 
         // Setter Text
         holder.itemView.setOnClickListener(new View.OnClickListener()
@@ -82,7 +72,7 @@ public class FoodMenuListAdapter extends RecyclerView.Adapter<FoodMenuListAdapte
             @Override
             public void onClick(View v)
             {
-                new RestaurantDialogFragment(restaurantid).show(parrent.getFragmentManager().beginTransaction(), RestaurantDialogFragment.TAG);
+
             }
         });
     }

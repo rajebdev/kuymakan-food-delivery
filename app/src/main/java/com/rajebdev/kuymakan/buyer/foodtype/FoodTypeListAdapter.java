@@ -3,21 +3,25 @@ package com.rajebdev.kuymakan.buyer.foodtype;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.rajebdev.kuymakan.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FoodTypeListAdapter extends RecyclerView.Adapter<FoodTypeListAdapter.ViewHolder>
 {
     private Fragment parrent;
-    private ArrayList<FoodTypeData> dataList;
+    private List<FoodTypeData> dataList;
 
-    public FoodTypeListAdapter(ArrayList<FoodTypeData> data, Fragment parrent)
+    public FoodTypeListAdapter(List<FoodTypeData> data, Fragment parrent)
     {
         this.dataList = data;
         this.parrent = parrent;
@@ -25,9 +29,13 @@ public class FoodTypeListAdapter extends RecyclerView.Adapter<FoodTypeListAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder
     {
+        ImageView images;
+        TextView label;
         ViewHolder(View itemView)
         {
             super(itemView);
+            images = itemView.findViewById(R.id.img_food_slider);
+            label = itemView.findViewById(R.id.tv_food_slider);
         }
     }
 
@@ -50,6 +58,9 @@ public class FoodTypeListAdapter extends RecyclerView.Adapter<FoodTypeListAdapte
             params.rightMargin = 0;
         }
         holder.itemView.setLayoutParams(params);
+
+        holder.label.setText(this.dataList.get(position).getLabel());
+        Glide.with(this.parrent.getContext()).load("http://192.168.0.103/apikuymakan/"+dataList.get(position).getImages()).into(holder.images);
 
         // Setter Text
         holder.itemView.setOnClickListener(new View.OnClickListener()

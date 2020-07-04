@@ -7,5 +7,7 @@ public interface Section {
 
     int type();
 
+    int getId();
+
     int sectionPosition();
 }

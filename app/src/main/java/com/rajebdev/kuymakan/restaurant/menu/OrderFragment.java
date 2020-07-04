@@ -62,7 +62,10 @@ public class OrderFragment extends Fragment {
         TabOrderAdapter tabOrderAdapter = new TabOrderAdapter(getChildFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(tabOrderAdapter);
         viewPager.setCurrentItem(0);
+
+        // untuk listener ketik
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

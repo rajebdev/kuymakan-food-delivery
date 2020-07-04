@@ -12,6 +12,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.rajebdev.kuymakan.buyer.food.FoodData;
 import com.rajebdev.kuymakan.buyer.foodsection.FoodItemSection;
 import com.rajebdev.kuymakan.buyer.foodsection.FoodSectionAdapter;
 import com.rajebdev.kuymakan.R;
@@ -65,13 +66,14 @@ public class RestaurantFoodSearchDialogFragment extends DialogFragment {
         RecyclerView recyclerView = view.findViewById(R.id.rv_food_search_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        final FoodSectionAdapter adapter = new FoodSectionAdapter(this);
+        RestaurantData restaurantData = new RestaurantData();
+        final FoodSectionAdapter adapter = new FoodSectionAdapter(this, 2);
         recyclerView.setAdapter(adapter);
 
         adapter.items = new ArrayList<Section>() {{
             int section = 0;
             for (int i = 0; i < 10; i++) {
-                add(new FoodItemSection(section));
+                add(new FoodItemSection(section, 1));
             }
         }};
         adapter.notifyDataSetChanged();

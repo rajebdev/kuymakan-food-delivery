@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ public class RegisterDialogFragment extends DialogFragment {
         // Spinner
         final PowerSpinnerView userSpinner = view.findViewById(R.id.user_type);
 
+        final EditText edtPhone = view.findViewById(R.id.phone_number);
         // Button Regis
         Button btnRegis = view.findViewById(R.id.btn_regis);
         btnRegis.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +40,7 @@ public class RegisterDialogFragment extends DialogFragment {
             public void onClick(View v) {
                 int userType = userSpinner.getSelectedIndex() + 1;
                 Log.i("narko", "usertype " + userType);
-                new OTPDialogFragment(userType).show(getChildFragmentManager().beginTransaction(), OTPDialogFragment.TAG);
+                new OTPDialogFragment(userType, edtPhone.getText().toString()).show(getChildFragmentManager().beginTransaction(), OTPDialogFragment.TAG);
             }
         });
 

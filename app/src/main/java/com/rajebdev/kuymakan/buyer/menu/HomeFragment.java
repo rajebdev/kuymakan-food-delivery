@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
@@ -22,16 +24,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.rajebdev.kuymakan.R;
+import com.rajebdev.kuymakan.RestClient;
 import com.rajebdev.kuymakan.buyer.favoritefood.FavoriteFoodListDialogFragment;
 import com.rajebdev.kuymakan.buyer.featured.FeaturedData;
 import com.rajebdev.kuymakan.buyer.featured.FeaturedListAdapter;
 import com.rajebdev.kuymakan.buyer.foodcategory.CategoryFragment;
+import com.rajebdev.kuymakan.buyer.foodcategory.FoodCategoryData;
+import com.rajebdev.kuymakan.buyer.foodcategory.FoodCategoryRespond;
 import com.rajebdev.kuymakan.buyer.foodslider.GroupSliderMenuFragment;
 import com.rajebdev.kuymakan.buyer.foodtype.FoodTypeData;
+import com.rajebdev.kuymakan.buyer.foodtype.FoodTypeRespond;
 import com.rajebdev.kuymakan.buyer.foodtype.FoodTypeListAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
@@ -135,16 +146,26 @@ public class HomeFragment extends Fragment {
         // Set Data For Recycle View
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        RecyclerView mRecyclerView = view.findViewById(R.id.rv_food_type_slider);
+        final RecyclerView mRecyclerView = view.findViewById(R.id.rv_food_type_slider);
         mRecyclerView.setLayoutManager(layoutManager);
+        final Fragment main = this;
+        RestClient.getService(getContext()).getListFoodType().enqueue(new Callback<FoodTypeRespond>() {
+            @Override
+            public void onResponse(Call<FoodTypeRespond> call, Response<FoodTypeRespond> response) {
+                if (response.isSuccessful()){
+                    List<FoodTypeData> listItem;
+                    listItem = response.body().getData();
+                    Log.e("FoodType", "onResponse: "+response.body().toString());
+                    FoodTypeListAdapter mListadapter = new FoodTypeListAdapter(listItem, main);
+                    mRecyclerView.setAdapter(mListadapter);
+                }
+            }
 
-        ArrayList<FoodTypeData> data = new ArrayList<>();
-        for (int i = 0; i < 10; i++)
-        {
-            data.add(new FoodTypeData());
-        }
-        FoodTypeListAdapter mListadapter = new FoodTypeListAdapter(data, this);
-        mRecyclerView.setAdapter(mListadapter);
+            @Override
+            public void onFailure(Call<FoodTypeRespond> call, Throwable t) {
+                Toast.makeText(main.getContext(), "Gagal Load "+t.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void setUpRecycleViewFeatured(View view) {
@@ -164,18 +185,33 @@ public class HomeFragment extends Fragment {
     }
 
 
-    private void loadAllFragment(FragmentTransaction ft){
+    private void loadAllFragment(final FragmentTransaction ft){
 
+        final Fragment main = this;
         // Start Group Menu Slider
-        for (int i=0; i < 9; i++)
-        {
-            Fragment itemCategoryGrid = new CategoryFragment();
-            ft.add(R.id.grid_category_container, itemCategoryGrid);
-        }
+        RestClient.getService(getContext()).getListFoodCategory().enqueue(new Callback<FoodCategoryRespond>() {
+            @Override
+            public void onResponse(Call<FoodCategoryRespond> call, Response<FoodCategoryRespond> response) {
+                if (response.isSuccessful()){
+//                    List<FoodCategoryData> listItem;
+//                    listItem = response.body().getData();
+//                    for (int i=0; i < 9; i++)
+//                    {
+//                        Fragment itemCategoryGrid = new CategoryFragment(listItem.get(i), main);
+//                        ft.add(R.id.grid_category_container, itemCategoryGrid);
+//                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<FoodCategoryRespond> call, Throwable t) {
+                Toast.makeText(main.getContext(), "Gagal Load "+t.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+
         // End Group Menu Slider
 
         // Start Group Menu Slider
-        for (int i=0; i < 5; i++)
+        for (int i=0; i < 1; i++)
         {
             Fragment itemGroupMenuSlider = new GroupSliderMenuFragment();
             ft.add(R.id.group_slider, itemGroupMenuSlider);

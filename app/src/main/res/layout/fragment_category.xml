@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="0dp"
+    android:layout_width="100dp"
     android:layout_height="wrap_content"
     android:layout_columnWeight="1"
     android:layout_margin="5dp"
@@ -20,7 +20,7 @@
         android:paddingBottom="15dp">
 
         <ImageView
-            android:id="@+id/img_category"
+            android:tag="img_category"
             android:src="@drawable/coupon1"
             android:layout_gravity="center"
             android:layout_width="36dp"
@@ -29,7 +29,7 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/text_category"
+            android:tag="text_category"
             android:textAlignment="center"
             android:layout_marginTop="5dp"
             android:textSize="10sp"
